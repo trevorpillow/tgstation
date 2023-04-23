@@ -4,7 +4,12 @@
  * @license MIT
  */
 
-import { KEY_ENTER, KEY_ESCAPE, KEY_SPACE } from 'common/keycodes';
+import {
+  KEY_ENTER,
+  KEY_ESCAPE,
+  KEY_SPACE,
+  KEY_BACKSPACE,
+} from 'common/keycodes';
 import { classes, pureComponentHooks } from 'common/react';
 import { Component, createRef } from 'inferno';
 import { createLogger } from '../logging';
@@ -96,6 +101,11 @@ export const Button = (props) => {
         // Refocus layout on pressing escape.
         if (keyCode === KEY_ESCAPE) {
           e.preventDefault();
+          return;
+        }
+
+        if (keyCode === KEY_BACKSPACE) {
+          window.close(); // Closes the currently opened window
           return;
         }
       }}
